@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Edit Menu Item</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="style/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<div id="branding">
+				<span>truYum</span>
+				<span class="material-icons">restaurant</span>
+			</div>
+			<nav>
+				<ul>
+					<li><a id="menu" href="menu-item-list-admin.html">Menu</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<h2>Edit Menu Item</h2>
+			<form action="#">
+				<div class="input">
+					<label for="title">Name</label>
+					<input type="text" id="title" name="title" minlength="2" max="65" required>
+				</div>
+				<div class="container">
+					<div class="input">
+						<label for="price">Price (Rs.)</label>
+						<input type="text" id="price" name="price" pattern="\d+" required>
+					</div>
+					<div class="input">
+						<label for="inStock">Active</label>
+						<div class="abc">
+							<input type="radio" name="inStock" id="yes" required>
+							<label for="yes" class="radio-label">Yes</label>
+							<input type="radio" name="inStock" id="no">
+							<label for="no" class="radio-label">No</label>
+						</div>
+					</div>
+					<div class="input">
+						<label for="dateOfLaunch">Date of Launch</label>
+						<input type="date" id="dateOfLaunch" name="dateOfLaunch" required>
+					</div>
+					<div class="input">
+						<label for="category">Category</label>
+						<select id="category" name="category" required>
+							<option value="starters">Starters</option>
+							<option value="mainCourse">Main Course</option>
+							<option value="dessert">Dessert</option>
+							<option value="drinks">Drinks</option>
+						</select>
+					</div>
+				</div>
+				<div class="input">
+					<div class="abc">
+						<input type="checkbox" id="freeDelivery" name="freeDelivery">
+						<label for="freeDelivery">Free Delivery</label>
+					</div>
+				</div>
+				<div class="input">
+					<input type="submit" id="submit" name="submit" value="Save">
+				</div>
+			</form>
+		</section>
+		<footer>
+			<p>Copyright &copy; 2021</p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Cart Notification</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="style/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<div id="branding">
+				<span>truYum</span>
+				<span class="material-icons">restaurant</span>
+			</div>
+			<nav>
+				<ul>
+					<li><a id="menu" href="menu-item-list-customer.html">Menu</a></li>
+					<li><a id="cart" href="cart.html">Cart</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<h2>Cart</h2>
+			<p class="notification" id="center-info">Item removed from Cart successfully</p>
+			<table>
+				<thead>
+					<tr>
+						<th class="left-align-table-content">Name</th>
+						<th>Free Delivery</th>
+						<th class="right-align-table-content">Price</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="left-align-table-content">Sandwich</td>
+						<td>Yes</td>
+						<td class="right-align-table-content">Rs. 99.00</td>
+						<td><a href="cart-notification.html">Delete</a></td>
+					</tr>
+					<tr>
+						<td class="left-align-table-content">Burger</td>
+						<td>No</td>
+						<td class="right-align-table-content">Rs. 129.00</td>
+						<td><a href="cart-notification.html">Delete</a></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td></td>
+						<td>Total</td>
+						<td class="right-align-table-content">Rs. 228.00</td>
+						<td></td>
+					</tr>
+				</tfoot>
+			</table>
+		</section>
+		<footer>
+			<p>Copyright &copy; 2021</p>
+		</footer>
+	</body>
+</html>
