@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.cognizant.truyum" />
+
+	<bean id="dateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="dd/MM/yyyy" />
+	</bean>
+
+	<bean id="sandwich" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="1" />
+		<property name="name" value="Sandwich" />
+		<property name="price" value="99.0f" />
+		<property name="active" value="true" />
+		<property name="dateOfLaunch">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="15/03/2017" />
+			</bean>
+		</property>
+		<property name="category" value="Main Course" />
+		<property name="freeDelivery" value="true" />
+	</bean>
+
+	<bean id="burger" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="2" />
+		<property name="name" value="Burger" />
+		<property name="price" value="129.0f" />
+		<property name="active" value="true" />
+		<property name="dateOfLaunch">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="23/12/2017" />
+			</bean>
+		</property>
+		<property name="category" value="Main Course" />
+		<property name="freeDelivery" value="false" />
+	</bean>
+
+	<bean id="pizza" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="3" />
+		<property name="name" value="Pizza" />
+		<property name="price" value="149.0f" />
+		<property name="active" value="true" />
+		<property name="dateOfLaunch">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="21/08/2018" />
+			</bean>
+		</property>
+		<property name="category" value="Main Course" />
+		<property name="freeDelivery" value="false" />
+	</bean>
+
+	<bean id="fries" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="4" />
+		<property name="name" value="French Fries" />
+		<property name="price" value="57.0f" />
+		<property name="active" value="false" />
+		<property name="dateOfLaunch">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="02/07/2017" />
+			</bean>
+		</property>
+		<property name="category" value="Starters" />
+		<property name="freeDelivery" value="true" />
+	</bean>
+
+	<bean id="brownie" class="com.cognizant.truyum.model.MenuItem">
+		<property name="id" value="5" />
+		<property name="name" value="Chocolate Brownie" />
+		<property name="price" value="32.0f" />
+		<property name="active" value="true" />
+		<property name="dateOfLaunch">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="02/11/2022" />
+			</bean>
+		</property>
+		<property name="category" value="Dessert" />
+		<property name="freeDelivery" value="true" />
+	</bean>
+
+	<bean id="menuItems" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="sandwich" />
+				<ref bean="burger" />
+				<ref bean="pizza" />
+				<ref bean="fries" />
+				<ref bean="brownie" />
+			</list>
+		</constructor-arg>
+	</bean>	
+
+	<bean id="menuItemsCart1" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="sandwich" />
+				<ref bean="burger" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+ 	<bean id="menuItemsCart2" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="cart1" class="com.cognizant.truyum.model.Cart">
+		<property name="menuItemList" ref="menuItemsCart1" />
+		<property name="total" value="228.0f" />
+	</bean>
+
+	<bean id="cart2" class="com.cognizant.truyum.model.Cart">
+		<property name="menuItemList" ref="menuItemsCart2" />
+		<property name="total" value="0.0f" />
+	</bean>
+
+	<bean id="userCarts" class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.Long">
+				<entry key="1" value-ref="cart1" />
+				<entry key="2" value-ref="cart2" />
+			</map>
+		</constructor-arg>
+	</bean>
+	
+</beans>
