@@ -1,6 +1,7 @@
 package com.cognizant.truyum.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
@@ -39,6 +41,8 @@ public class MenuItem {
 	private Category category;
 	@Column(name = "freeDelivery")
 	private boolean freeDelivery;
+	@ManyToMany(mappedBy = "cartItems")
+	private Set<User> cartUsers;
 
 	public MenuItem() {
 
@@ -110,6 +114,14 @@ public class MenuItem {
 
 	public void setFreeDelivery(boolean freeDelivery) {
 		this.freeDelivery = freeDelivery;
+	}
+
+	public Set<User> getCartUsers() {
+		return cartUsers;
+	}
+
+	public void setCartUsers(Set<User> cartUsers) {
+		this.cartUsers = cartUsers;
 	}
 
 	@Override

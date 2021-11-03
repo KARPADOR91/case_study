@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,7 @@
 							type="number" minFractionDigits="2" maxFractionDigits="2"
 							value="${menuItem.price}" /></td>
 					<td>${menuItem.active ? 'Yes' : 'No'}</td>
-					<td>${menuItem.dateOfLaunch}</td>
+					<td>${fn:substring(menuItem.dateOfLaunch, 0, 10)}</td>
 					<td>${menuItem.category.name}</td>
 					<td>${menuItem.freeDelivery ? 'Yes' : 'No'}</td>
 					<td><a href="/show-edit-menu-item?menuItemId=${menuItem.id}">Edit</a></td>
