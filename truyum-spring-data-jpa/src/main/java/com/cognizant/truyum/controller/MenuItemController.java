@@ -1,7 +1,5 @@
 package com.cognizant.truyum.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.omg.CORBA.SystemException;
@@ -51,18 +49,18 @@ public class MenuItemController {
 	@GetMapping(value = "/show-edit-menu-item")
 	public String showEditMenuItem(@RequestParam int menuItemId, ModelMap model) {
 		LOGGER.info("Start showEditMenuItem() of MenuItemController");
-		MenuItem menuItem = menuItemService.getMenuItem(menuItemId);
-		model.addAttribute("menuItem", menuItem);
-		List<Category> categories = categoryService.getCategoryList();
-		model.addAttribute("categories", categories);
+		model.addAttribute("menuItem", menuItemService.getMenuItem(menuItemId));
+		model.addAttribute("categories", categoryService.getCategoryList());
 		LOGGER.info("End showEditMenuItem() of MenuItemController");
 		return "edit-menu-item";
 	}
 	
 	@PostMapping(value = "/edit-menu-item")
-	public String editMenuItem(@Valid @ModelAttribute("menuItem") MenuItem menuItem, BindingResult bindingResult) {
+	public String editMenuItem(@Valid @ModelAttribute("menuItem") MenuItem menuItem, BindingResult bindingResult, ModelMap model) {
 		LOGGER.info("Start editMenuItem() of MenuItemController");
 		if(bindingResult.hasErrors()) {
+			model.addAttribute("menuItem", menuItem);
+			model.addAttribute("categories", categoryService.getCategoryList());
 			return "edit-menu-item";
 		}
 		menuItemService.modifyMenuItem(menuItem);

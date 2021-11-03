@@ -1,6 +1,5 @@
 package com.cognizant.truyum.controller;
 
-import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -31,9 +30,8 @@ public class CartController {
 	public String addToCart(@RequestParam int menuItemId, ModelMap model) {
 		LOGGER.info("Start addToCart() of CartController");
 		User user = userService.get(1);
-		MenuItem menuItem = menuItemService.getMenuItem(menuItemId);
 		Set<MenuItem> cartItems = user.getCartItems();
-		cartItems.add(menuItem);
+		cartItems.add(menuItemService.getMenuItem(menuItemId));
 		user.setCartItems(cartItems);
 		userService.save(user);
 		model.addAttribute("addCartStatus", true);
@@ -65,9 +63,8 @@ public class CartController {
 		LOGGER.info("Start removeCart() of CartController");
 		model.addAttribute("userId", userId);
 		User user = userService.get(userId);
-		Set<MenuItem> cartItems = userService.get(userId).getCartItems();
-		MenuItem menuItem = menuItemService.getMenuItem(menuItemId);
-		cartItems.remove(menuItem);
+		Set<MenuItem> cartItems = user.getCartItems();
+		cartItems.remove(menuItemService.getMenuItem(menuItemId));
 		user.setCartItems(cartItems);
 		userService.save(user);
 		if(cartItems.isEmpty()) {

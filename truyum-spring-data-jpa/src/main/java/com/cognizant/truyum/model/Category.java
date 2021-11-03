@@ -10,6 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.ToString;
+
+
+@Data
 @Entity
 @Table(name = "category")
 public class Category {
@@ -19,36 +24,8 @@ public class Category {
 	private int id;
 	@Column(name = "name")
 	private String name;
+	@ToString.Exclude
 	@OneToMany(mappedBy = "category")
 	private Set<MenuItem> MenuItemList;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Set<MenuItem> getMenuItemList() {
-		return MenuItemList;
-	}
-
-	public void setMenuItemList(Set<MenuItem> menuItemList) {
-		MenuItemList = menuItemList;
-	}
-
-	@Override
-	public String toString() {
-		return String.format("Category [id=%s, name=%s]", id, name);
-	}
 
 }
